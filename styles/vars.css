@@ -8,6 +8,11 @@
 }
 @font-face 
 {
+	font-family: minecraft-alt;
+	src: url('../fonts/minecraftregular-backup.ttf');
+}
+@font-face 
+{
 	font-family: minecraft-bold;
 	src: url('../fonts/minecraftbold.otf');
 }
