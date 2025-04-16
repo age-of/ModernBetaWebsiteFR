@@ -1,12 +1,60 @@
-<!DOCTYPE html>
+---
+interface Props {
+	title?: string;
+	defaultKeywords?: boolean;
+	keywords?: string[];
+}
+
+const DEFAULT_KEYWORDS = [
+	"Minecraft",
+	"Modern",
+	"Beta",
+	"ModernBeta",
+	"1.7.3",
+	"server",
+	"smp",
+	"multiplayer",
+	"survival",
+	"goldenage",
+	"public",
+	"java",
+	"bedrock",
+	"1.20",
+	"1.21",
+];
+let {
+	title: pageTitle = "Modern Beta SMP",
+	defaultKeywords = true,
+	keywords = [],
+} = Astro.props;
+
+// dedupe default keywords
+if (defaultKeywords) {
+	let keywordSet = new Set(keywords);
+	DEFAULT_KEYWORDS.forEach(keywordSet.add);
+	keywords = Array.from(keywordSet);
+}
+---
+
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta http-equiv="Content-Language" content="en-US" />
+
+		<meta name="generator" content={Astro.generator} />
+		<meta name="title" content={pageTitle} />
+		<meta name="keywords" content={keywords.join(", ")} />
+		<meta name="language" content="English" />
+		<meta name="author" content="Karltroid" />
 		<meta name="viewport" content="width=device-width" />
+
+		<title>{pageTitle}</title>
+
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Modern Beta</title>
 	</head>
 	<body>
 		<slot />
