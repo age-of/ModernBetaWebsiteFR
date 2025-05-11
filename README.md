@@ -1,2 +1,1 @@
-# ModernBetaWebsite
- 
+# ModernBeta.org
